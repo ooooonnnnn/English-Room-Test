@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 
 [Tooltip("A singleton that will be destroyed if an older one with the same name exists")]
-public class PersistentSingleton : MonoBehaviour
+public class PersistentSingleton<T> : MonoBehaviour where T : PersistentSingleton<T>
 {
-    private static Dictionary<string, PersistentSingleton> singletonInstances = new();
-    public static PersistentSingleton Instance => _thisInstance;
-    protected static PersistentSingleton _thisInstance;
+    private static Dictionary<string, PersistentSingleton<T>> singletonInstances = new();
+    public static T Instance => _thisInstance;
+    protected static T _thisInstance;
 
     protected virtual void Awake()
     {
@@ -20,7 +20,7 @@ public class PersistentSingleton : MonoBehaviour
         {
             singletonInstances.Add(gameObjectName, this);
             DontDestroyOnLoad(gameObject);
-            _thisInstance = this;
+            _thisInstance = (T)this;
             return;
         }
         
