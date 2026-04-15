@@ -1099,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: debugAction
       value: 
-      objectReference: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+      objectReference: {fileID: -4855285006156811384, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: debugAction.m_Name
       value: Debug
