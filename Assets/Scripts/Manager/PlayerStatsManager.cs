@@ -2,13 +2,28 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 [Tooltip("Keeps track of the player's stats")]
-public class PlayerStatsManager : PersistentSingleton
+public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
 {
     [SerializeField] private SerializedDictionary<StatType, float> stats;
     public UnityEvent onStatsChanged;
+
+    [SerializeField] private InputActionReference debugAction;
+
+    private void OnValidate()
+    {
+        debugAction.action.performed += ctx => ChangeRandomStat();
+    }
+
+    private void ChangeRandomStat()
+    {
+        StatType[] statTypes = (StatType[])Enum.GetValues(typeof(StatType));
+        SetStatValue(statTypes[Random.Range(0, statTypes.Length)], Random.Range(0, 100));
+    }
 
     public float GetStatValue(StatType stat)
     { 
