@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public class PlayerStatsManager : PersistentSingleton
 {
     [SerializeField] private SerializedDictionary<StatType, float> stats;
     public UnityEvent onStatsChanged;
-    
+
     public float GetStatValue(StatType stat)
     { 
         //TODO: default values SO
@@ -19,5 +20,15 @@ public class PlayerStatsManager : PersistentSingleton
     {
         stats[stat] = value;
         onStatsChanged?.Invoke();
+    }
+
+    [ContextMenu("Initialize with default values")]
+    private void AddAllStatsDefaultValues()
+    {
+        foreach (StatType statType in Enum.GetValues(typeof(StatType)))
+        {
+            //TODO: default values SO
+            SetStatValue(statType, 0);
+        }
     }
 }
