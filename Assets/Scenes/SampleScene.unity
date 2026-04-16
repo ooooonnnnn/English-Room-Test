@@ -1943,10 +1943,11 @@ GameObject:
   - component: {fileID: 800499719}
   - component: {fileID: 800499718}
   - component: {fileID: 800499721}
-  - component: {fileID: 800499722}
   - component: {fileID: 800499723}
+  - component: {fileID: 800499722}
   - component: {fileID: 800499724}
   - component: {fileID: 800499725}
+  - component: {fileID: 800499726}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2063,6 +2064,23 @@ MonoBehaviour:
   characterController: {fileID: 800499721}
   speed: 10
   runSpeedFactor: 1.5
+  minStaminaToSprint: 5
+  sprintStaminaCostPerSecond: 10
+  onSprint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 800499726}
+        m_TargetAssemblyTypeName: CharacterStamina, Assembly-CSharp
+        m_MethodName: ConsumeStamina
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800499723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2113,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 800499721}
   jumpHeight: 3
+  staminaCost: 10
+  onJump:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 800499726}
+        m_TargetAssemblyTypeName: CharacterStamina, Assembly-CSharp
+        m_MethodName: ConsumeStamina
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &800499725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2116,6 +2150,47 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: -1, z: 0}
+--- !u!114 &800499726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800499716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f90cc3a207856045994c3824ec6bb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 0
+  proportionalRegenRate: 0.2
+  onStaminaChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 800499722}
+        m_TargetAssemblyTypeName: CharacterMove, Assembly-CSharp
+        m_MethodName: HandleStaminaChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 800499724}
+        m_TargetAssemblyTypeName: CharacterJump, Assembly-CSharp
+        m_MethodName: HandleStaminaChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &810079025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9034584713864472739, guid: 7dffbc1bfe5f7674882f0d7d178d6737, type: 3}
@@ -7114,7 +7189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7126,6 +7201,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
@@ -7141,6 +7220,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 800499722}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 800499726}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -7153,16 +7236,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateStatValues
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnStatsChanged
+      value: HandleStatsChanged
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: OnStatsChanged
+      value: HandleStatsChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: HandleStatsChanged
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -7177,6 +7268,10 @@ PrefabInstance:
       value: CharacterMove, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: CharacterStamina, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -7186,6 +7281,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
+      propertyPath: onStatsChanged.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3233413907098191368, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}

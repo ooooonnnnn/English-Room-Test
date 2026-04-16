@@ -5,5 +5,5 @@ using UnityEngine;
 /// </summary>
 public interface IAffectedByStats
 {
-    public void OnStatsChanged();
+    public void HandleStatsChanged();
 }

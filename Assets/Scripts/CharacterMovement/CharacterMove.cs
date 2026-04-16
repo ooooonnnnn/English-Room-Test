@@ -1,14 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class CharacterMove : CharacterControllerController, IAffectedByStats
+public class CharacterMove : CharacterControllerController, IAffectedByStats, IRequireStamina
 {
     [SerializeField] private float speed;
-    [SerializeField] private float runSpeedFactor;
-
+    [SerializeField, Tooltip("Sprinting speed is walking speed times this factor")]
+    private float runSpeedFactor;
     private bool _canRun = true;
-    public bool canRun { 
+    public bool CanRun 
+    {
         get => _canRun;
         set
         {
@@ -16,6 +18,14 @@ public class CharacterMove : CharacterControllerController, IAffectedByStats
             if (!value) _isRunning = false;
         }
     }
+    [SerializeField] private float minStaminaToSprint;
+    [SerializeField] private float sprintStaminaCostPerSecond;
+    public float StaminaCostPerFixedUpdate => sprintStaminaCostPerSecond * Time.fixedDeltaTime;
+    /// <summary>
+    /// Passed with the amount of stamina used to sprint in the last fixed update.
+    /// </summary>
+    public UnityEvent<float> onSprint;
+    
     private bool _isRunning;
     private Vector2 _inputDir;
 
@@ -35,7 +45,7 @@ public class CharacterMove : CharacterControllerController, IAffectedByStats
     public void HandleRunInput(InputAction.CallbackContext ctx)
     {
         var runInput = ctx.ReadValueAsButton();
-        _isRunning = runInput && canRun;
+        _isRunning = runInput && _canRun;
     }
 
     private void FixedUpdate()
@@ -43,12 +53,23 @@ public class CharacterMove : CharacterControllerController, IAffectedByStats
         var totalSpeed = _isRunning ? speed * runSpeedFactor : speed; 
         characterController.Move((transform.forward * _inputDir.y + transform.right * _inputDir.x)
                                  * (totalSpeed * Time.fixedDeltaTime));
+        
+        if (_isRunning && _inputDir.sqrMagnitude > 0) 
+            onSprint.Invoke(StaminaCostPerFixedUpdate);
     }
 
-    public void OnStatsChanged()
+    public void HandleStatsChanged()
     {
         speed = Mathf.Clamp(
             PlayerStatsManager.Instance.GetStatValue(StatType.MoveSpeed),
             0, float.PositiveInfinity);
+    }
+
+    public void HandleStaminaChange(float currentStamina, float _)
+    {
+        if (!_isRunning)
+            CanRun = currentStamina >= minStaminaToSprint;
+        else
+            CanRun = currentStamina > 0;
     }
 }
