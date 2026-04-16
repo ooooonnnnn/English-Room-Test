@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterJump : CharacterControllerController
+public class CharacterJump : CharacterControllerController, IAffectedByStats
 {
     [SerializeField] private float jumpHeight;
     private bool isGrounded;
@@ -37,5 +37,12 @@ public class CharacterJump : CharacterControllerController
     private void OnTriggerExit(Collider other)
     {
         isGrounded = false;
+    }
+
+    public void OnStatsChanged()
+    {
+        jumpHeight = Mathf.Clamp(
+            PlayerStatsManager.Instance.GetStatValue(StatType.JumpHeight),
+            0, float.PositiveInfinity);
     }
 }

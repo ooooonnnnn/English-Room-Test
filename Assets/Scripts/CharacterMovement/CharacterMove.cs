@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterMove : CharacterControllerController
+public class CharacterMove : CharacterControllerController, IAffectedByStats
 {
     [SerializeField] private float speed;
     [SerializeField] private float runSpeedFactor;
@@ -43,5 +43,12 @@ public class CharacterMove : CharacterControllerController
         var totalSpeed = _isRunning ? speed * runSpeedFactor : speed; 
         characterController.Move((transform.forward * _inputDir.y + transform.right * _inputDir.x)
                                  * (totalSpeed * Time.fixedDeltaTime));
+    }
+
+    public void OnStatsChanged()
+    {
+        speed = Mathf.Clamp(
+            PlayerStatsManager.Instance.GetStatValue(StatType.MoveSpeed),
+            0, float.PositiveInfinity);
     }
 }
