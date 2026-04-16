@@ -17,6 +17,8 @@ public class CharacterJump : CharacterControllerController, IAffectedByStats, IR
     
     public void HandleJumpInput(InputAction.CallbackContext ctx)
     {
+        if (ctx.phase != InputActionPhase.Performed) return;
+        
         if (!isGrounded || !_canJump) return;
 
         if (ctx.ReadValueAsButton())

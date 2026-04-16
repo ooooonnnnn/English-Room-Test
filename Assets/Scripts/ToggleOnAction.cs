@@ -13,7 +13,6 @@ public class ToggleOnAction : MonoBehaviour
 
     public void ToggleActive(InputAction.CallbackContext ctx)
     {
-        print("toggling");
         gameObject.SetActive(!gameObject.activeSelf);
     }
 }
