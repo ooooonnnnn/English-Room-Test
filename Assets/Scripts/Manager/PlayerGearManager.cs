@@ -32,13 +32,13 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
 
     #endregion
 
-    public bool TryEquip(Gear item)
+    public void TryEquip(Gear item)
     {
         var itemType = item.ItemData.ItemType;
         if (!gearSlots.ContainsKey(itemType))
         {
             Debug.LogWarning($"No gear slot found for item type {itemType}");
-            return false;
+            return;
         }
 
         //Find the first empty slot
@@ -46,7 +46,7 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         if (!emptySlot)
         {
             print($"No empty slot to equip {item.ItemData.name}");
-            return false;
+            return;
         }
         
         //Equip the item
@@ -54,7 +54,6 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         ReportEquippedItems();
         print($"Equipped {item.ItemData.name} to slot {emptySlot.name}");
         InventoryManager.Instance?.RemoveItem(item);
-        return true;
     }
 
     private void ReportEquippedItems()
