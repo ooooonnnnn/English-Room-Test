@@ -322,6 +322,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40226456}
   m_CullTransparentMesh: 1
+--- !u!1 &44984857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44984859}
+  - component: {fileID: 44984858}
+  m_Layer: 0
+  m_Name: Player Wallet Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &44984858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44984857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05222d04fcfb46b45921faf3caf3af0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  debugAction: {fileID: -4942291724338290076, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onMoneyChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &44984859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44984857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1244.4269, y: 576.7491, z: -5.1025443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163426915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: dd00f07bb21c6fa4c90bc44d7c8052bb, type: 2}
     - target: {fileID: 914658652133722027, guid: ecff592b8c49d914bae21c0b0ccd567a, type: 3}
       propertyPath: onInventoryChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 914658652133722027, guid: ecff592b8c49d914bae21c0b0ccd567a, type: 3}
       propertyPath: onInventoryChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1958,7 +2007,7 @@ PrefabInstance:
     - target: {fileID: 914658652133722027, guid: ecff592b8c49d914bae21c0b0ccd567a, type: 3}
       propertyPath: onInventoryChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 278755855}
+      objectReference: {fileID: 278755857}
     - target: {fileID: 914658652133722027, guid: ecff592b8c49d914bae21c0b0ccd567a, type: 3}
       propertyPath: onInventoryChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3044,6 +3093,8 @@ PrefabInstance:
       propertyPath: m_text
       value: 'F1: Randomize Stats
 
+        F2: Add Money
+
 '
       objectReference: {fileID: 0}
     - target: {fileID: 6076251796424828791, guid: f5027fa6be690064f861fc1483792561, type: 3}
@@ -3501,6 +3552,50 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6357729004202470470, guid: 47ff3c5a5381a0c488c39a7be17fa333, type: 3}
   m_PrefabInstance: {fileID: 1296593145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1314545563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1314545565}
+  - component: {fileID: 1314545564}
+  m_Layer: 0
+  m_Name: Player Buying Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1314545564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314545563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12af404dbce3ee4fa5815cf3a1bbe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1314545565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314545563}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1244.4269, y: 576.7491, z: -5.1025443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315891586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6490,8 +6585,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 6613457660923382099}
   - {fileID: 1384956032}
-  - {fileID: 1004354666}
   - {fileID: 686105896}
+  - {fileID: 1314545565}
+  - {fileID: 44984859}
+  - {fileID: 1004354666}
   - {fileID: 1603673009}
   - {fileID: 218373986}
   - {fileID: 278755854}
