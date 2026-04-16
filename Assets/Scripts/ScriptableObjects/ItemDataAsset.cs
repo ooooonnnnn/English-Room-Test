@@ -3,10 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewItem", menuName = "Scriptable Objects/Item")]
 public class ItemDataAsset : ScriptableObject
 {
+    [Header("Functional Properties")]
     [SerializeField] private ItemType itemType;
-    
-    [SerializeField] private string itemName;
+    [SerializeField] private StatAffectorData statAffectorData;
     [SerializeField] private float price;
+    
+    [Header("Display Properties")]
+    [SerializeField] private string itemName;
     [SerializeField] private string description;
     [SerializeField] private Sprite icon;
 

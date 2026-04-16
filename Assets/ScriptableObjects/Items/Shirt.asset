@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Shirt
   m_EditorClassIdentifier: 
   itemType: 1
+  statAffectorData:
+    statType: 0
+    value: 0
+  price: 100
   itemName: Shirt
-  price: 0
-  description: 
+  description: A cool item
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
