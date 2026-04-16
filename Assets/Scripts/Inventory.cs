@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Gear item)
     {
         items.Add(item);
+        item.transform.SetParent(transform);
         onInventoryChanged?.Invoke();
     }
 
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(Gear item)
     {
         items.Remove(item);
+        item.transform.SetParent(null);
         onInventoryChanged?.Invoke();
     }
 }

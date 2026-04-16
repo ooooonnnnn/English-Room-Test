@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Holds the player's money and determines if they can buy an item
+/// </summary>
 public class PlayerWalletManager : PersistentSingleton<PlayerWalletManager>
 {
     [SerializeField] private float money;

@@ -11,6 +11,6 @@ public class ShopInventoryUI : InventoryUIBase
     {
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(
-            () => print($"Trying to buy {gear.ItemData.ItemName} for {gear.ItemData.Price} g"));
+            () => PlayerBuyingManager.Instance.TryBuy(gear));
     }
 }
