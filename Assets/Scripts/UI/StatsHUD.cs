@@ -9,8 +9,13 @@ public class StatsHUD : MonoBehaviour
 {
     [SerializeField] private Transform statsContainer;
     [SerializeField] private SerializedDictionary<StatType, TMP_Text> statTextDict;
-    [SerializeField] private StatType_Names statTypeNames;
+    [SerializeField, HideInInspector] private StatType_Names statTypeNames;
     [SerializeField] private TMP_Text statTextPrefab;
+
+    private void OnValidate()
+    {
+        statTypeNames = StatType_Names.LoadSingletonAsset();
+    }
 
     private void Start()
     {
@@ -55,7 +60,6 @@ public class StatsHUD : MonoBehaviour
             var value = PlayerStatsManager.Instance.GetStatValue(statType);
             statTextDict[statType].text =
                 $"{statTypeNames.GetStatTypeName(statType)}: {value:N0}";
-            //TODO: state type names in stat manager, not here
         }
     }
 }

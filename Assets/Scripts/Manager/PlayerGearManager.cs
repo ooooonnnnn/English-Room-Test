@@ -53,7 +53,7 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         emptySlot.Item = item;
         onGearChanged.Invoke();
         print($"Equipped {item.ItemData.ItemName} to slot {emptySlot.name}");
-        InventoryManager.Instance?.RemoveItem(item);
+        InventoryManager.Instance?.GetInventory(InventoryType.Player)?.RemoveItem(item);
     }
 
     public List<Gear> GetEquippedGear()

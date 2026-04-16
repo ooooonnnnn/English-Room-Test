@@ -7,6 +7,7 @@ public abstract class InventoryUIBase : MonoBehaviour
 {
     [SerializeField] private Transform itemContainer;
     [SerializeField] private InventoryItemUI itemRowPrefab;
+    [SerializeField, HideInInspector] protected InventoryType targetInventory;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public abstract class InventoryUIBase : MonoBehaviour
 
     private void PopulateContainer()
     {
-        List<Gear> sortedItems = InventoryManager.Instance.GetSortedItems();
+        List<Gear> sortedItems = InventoryManager.Instance.GetInventory(targetInventory).GetSortedItems();
         foreach (Gear gear in sortedItems)
         {
             InventoryItemUI row = Instantiate(itemRowPrefab, itemContainer);

@@ -47,14 +47,15 @@ public class ItemDataAsset : ScriptableObject
 
     private void ConstructStatEffectDescription()
     {
-        var statNamesAssetGUIDS = AssetDatabase.FindAssets(nameof(StatType_Names));
-        if (statNamesAssetGUIDS.Length == 0)
-        {
-            Debug.LogWarning("No statType names asset found, can't generate stat effects description");
-            return;
-        }
-        var statNamesAssetPath = AssetDatabase.GUIDToAssetPath(statNamesAssetGUIDS[0]);
-        var statNamesAsset = AssetDatabase.LoadAssetAtPath<StatType_Names>(statNamesAssetPath);
+        // var statNamesAssetGUIDS = AssetDatabase.FindAssets(nameof(StatType_Names));
+        // if (statNamesAssetGUIDS.Length == 0)
+        // {
+        //     Debug.LogWarning("No statType names asset found, can't generate stat effects description");
+        //     return;
+        // }
+        // var statNamesAssetPath = AssetDatabase.GUIDToAssetPath(statNamesAssetGUIDS[0]);
+        // var statNamesAsset = AssetDatabase.LoadAssetAtPath<StatType_Names>(statNamesAssetPath);
+        var statNamesAsset = StatType_Names.LoadSingletonAsset();
         
         var descriptions = new List<string>();
         foreach (var affectorData in StatAffectorData)

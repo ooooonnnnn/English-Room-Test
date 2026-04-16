@@ -20,4 +20,16 @@ public abstract class SingletonSO<T> : ScriptableObject where T : SingletonSO<T>
         }
         Instance = (T)this;
     }
+
+    public static T LoadSingletonAsset()
+    {
+        var assetGUIDS = AssetDatabase.FindAssets(typeof(T).ToString());
+        if (assetGUIDS.Length == 0)
+        {
+            Debug.LogWarning($"No singleton assets of type {typeof(T)} found");
+            return null;
+        }
+        var foundAssetPath = AssetDatabase.GUIDToAssetPath(assetGUIDS[0]);
+        return AssetDatabase.LoadAssetAtPath<T>(foundAssetPath);
+    }
 }

@@ -1,33 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Rendering;
 
-/// <summary>Singleton manager that owns the player inventory — a sorted list of ItemData.</summary>
+/// <summary>
+/// Gives access to all inventories
+/// </summary>
 public class InventoryManager : PersistentSingleton<InventoryManager>
 {
-    [SerializeField] private List<Gear> items;
+    [SerializeField] private SerializedDictionary<InventoryType, Inventory> inventories;
+    
+    public Inventory GetInventory(InventoryType inventoryType) => inventories.GetValueOrDefault(inventoryType,null);
 
-    public UnityEvent onInventoryChanged;
-
-    /// <summary>Returns a new list of items sorted by Price ascending.</summary>
-    public List<Gear> GetSortedItems()
+    private void OnValidate()
     {
-        var sorted = new List<Gear>(items);
-        sorted.Sort((a, b) => a.ItemData.Price.CompareTo(b.ItemData.Price));
-        return sorted;
-    }
-
-    /// <summary>Adds an item to the inventory and fires onInventoryChanged.</summary>
-    public void AddItem(Gear item)
-    {
-        items.Add(item);
-        onInventoryChanged?.Invoke();
-    }
-
-    /// <summary>Removes the first occurrence of the item and fires onInventoryChanged.</summary>
-    public void RemoveItem(Gear item)
-    {
-        items.Remove(item);
-        onInventoryChanged?.Invoke();
+        inventories = new();
+        foreach (var inventory in FindObjectsByType<Inventory>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            inventories[inventory.InventoryType] = inventory;
+        }
     }
 }
