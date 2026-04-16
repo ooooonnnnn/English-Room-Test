@@ -9,5 +9,5 @@ public enum ItemType
     Pants,
     Boots,
     Gloves,
-    Weapon
+    Necklace
 }

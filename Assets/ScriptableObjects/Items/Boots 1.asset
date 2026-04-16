@@ -19,7 +19,7 @@ MonoBehaviour:
   - statType: 1
     value: -1
   price: 100
-  itemName: Boots
-  flavorDescription: A cool item
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: Steel Greaves
+  flavorDescription: Protective boots
+  icon: {fileID: 21300000, guid: 49440cba7d094ad42ba19be3e4f0428c, type: 3}
   statEffectsDescription: 'Speed: +5 Jump Height: -1'

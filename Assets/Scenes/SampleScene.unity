@@ -4731,6 +4731,10 @@ PrefabInstance:
       propertyPath: onGearChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 995276258}
+    - target: {fileID: 4631791219846303882, guid: 7dffbc1bfe5f7674882f0d7d178d6737, type: 3}
+      propertyPath: m_Name
+      value: Necklace Slot
+      objectReference: {fileID: 0}
     - target: {fileID: 4643962851470079745, guid: 7dffbc1bfe5f7674882f0d7d178d6737, type: 3}
       propertyPath: m_Name
       value: Player Gear Manager
