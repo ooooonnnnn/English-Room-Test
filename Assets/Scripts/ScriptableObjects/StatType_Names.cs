@@ -4,13 +4,15 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "StatType_Names", menuName = "Scriptable Objects/StatType_Names")]
-public class StatType_Names : ScriptableObject
+public class StatType_Names : SingletonSO<StatType_Names>
 {
     [SerializeField] private SerializedDictionary<StatType, string> statTypeNames;
 
     #region Initialization
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
+            
             ConditionalInitializeDict();
 
             AddMissingStatNames();

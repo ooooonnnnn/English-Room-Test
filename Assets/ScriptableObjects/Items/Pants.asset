@@ -16,7 +16,10 @@ MonoBehaviour:
   statAffectorData:
   - statType: 0
     value: 5
+  - statType: 1
+    value: -1
   price: 100
   itemName: Pants
-  description: A cool item
+  flavorDescription: A cool item
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  statEffectsDescription: 'Speed: +5 Jump Height: -1'

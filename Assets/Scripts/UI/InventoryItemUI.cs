@@ -9,6 +9,11 @@ public class InventoryItemUI : MonoBehaviour
     [SerializeField] private Button actionButton;
     public Button ActionButton => actionButton;
 
+    private void OnValidate()
+    {
+        itemDisplayers = GetComponentsInChildren<ItemDisplayerUIBase>();
+    }
+
     /// <summary>Delegates item data to each child display component.</summary>
     public void Setup(ItemDataAsset item)
     {

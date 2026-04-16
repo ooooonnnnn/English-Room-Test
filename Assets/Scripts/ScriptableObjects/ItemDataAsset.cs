@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Scriptable Objects/Item")]
@@ -10,8 +13,10 @@ public class ItemDataAsset : ScriptableObject
     
     [Header("Display Properties")]
     [SerializeField] private string itemName;
-    [SerializeField] private string description;
+    [SerializeField] private string flavorDescription;
     [SerializeField] private Sprite icon;
+
+    [SerializeField, HideInInspector] private string statEffectsDescription;
 
     /// <summary>
     /// The type of the item. You can only equip an item of a specific type in each slot.
@@ -25,7 +30,7 @@ public class ItemDataAsset : ScriptableObject
     public float Price => price;
 
     /// <summary>A short description of the item.</summary>
-    public string Description => description;
+    public string Description => string.Concat(flavorDescription, "\n", statEffectsDescription);
 
     /// <summary>The icon sprite representing the item.</summary>
     public Sprite Icon => icon;
@@ -34,4 +39,29 @@ public class ItemDataAsset : ScriptableObject
     /// Array of stat effects this item has
     /// </summary>
     public StatAffectorData[] StatAffectorData => statAffectorData;
+
+    private void OnValidate()
+    {
+        ConstructStatEffectDescription();
+    }
+
+    private void ConstructStatEffectDescription()
+    {
+        var statNamesAssetGUIDS = AssetDatabase.FindAssets(nameof(StatType_Names));
+        if (statNamesAssetGUIDS.Length == 0)
+        {
+            Debug.LogWarning("No statType names asset found, can't generate stat effects description");
+            return;
+        }
+        var statNamesAssetPath = AssetDatabase.GUIDToAssetPath(statNamesAssetGUIDS[0]);
+        var statNamesAsset = AssetDatabase.LoadAssetAtPath<StatType_Names>(statNamesAssetPath);
+        
+        var descriptions = new List<string>();
+        foreach (var affectorData in StatAffectorData)
+        {
+            descriptions.Add($"{statNamesAsset.GetStatTypeName(affectorData.StatType)}: {affectorData.Value:+0;-0;+0}");
+        }
+
+        statEffectsDescription = string.Join(' ', descriptions);
+    }
 }
