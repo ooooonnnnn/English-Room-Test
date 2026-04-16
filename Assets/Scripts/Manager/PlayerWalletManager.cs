@@ -17,7 +17,12 @@ public class PlayerWalletManager : PersistentSingleton<PlayerWalletManager>
     {
         debugAction.action.performed += ctx => AddMoney(100);
     }
-    
+
+    private void Start()
+    {
+        onMoneyChanged.Invoke(money);
+    }
+
     public void AddMoney(float amount)
     {
         money += amount;
