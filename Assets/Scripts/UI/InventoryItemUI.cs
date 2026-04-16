@@ -16,9 +16,9 @@ public class InventoryItemUI : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        print("Testing Inventory item ui");
-        Setup(InventoryManager.Instance.GetItem(0));
-    }
+    // private void Start()
+    // {
+    //     print("Testing Inventory item ui");
+    //     Setup(InventoryManager.Instance.GetItem(0));
+    // }
 }
