@@ -9,6 +9,12 @@ public class PlayerEquipmentUI : MonoBehaviour
     private void OnValidate()
     {
         InitializeEquipmentSlots();
+
+    }
+
+    private void Start()
+    {
+        SetUnequipCallbacks();
     }
 
     private void InitializeEquipmentSlots()
@@ -20,18 +26,32 @@ public class PlayerEquipmentUI : MonoBehaviour
         }
     }
 
+    private void SetUnequipCallbacks()
+    {
+        if (!PlayerGearManager.Instance)
+        {
+            Debug.LogError("PlayerGearManager is not initialized");
+            return;
+        }
+        
+        foreach (var slotUIPair in equipmentSlots)
+        {
+            var slotUI = slotUIPair.Value;
+            if (!slotUI) continue;
+            
+            var unequipCallback = slotUI.ActionButton.onClick;
+            unequipCallback.RemoveAllListeners();
+            unequipCallback.AddListener(slotUIPair.Key.TryUnequip);
+        }
+    }
+
     public void Refresh()
     {
         foreach (var slotUIPair in equipmentSlots)
         {
             var gearEquippedInSlot = slotUIPair.Key.Item;
-            if (!gearEquippedInSlot) continue;
-            
             var slotUI = slotUIPair.Value;
-            slotUI.Setup(gearEquippedInSlot.ItemData);
-            var unequipCallback = slotUI.ActionButton.onClick;
-            unequipCallback.RemoveAllListeners();
-            //TODO: Add unequip
+            slotUI.DisplayItemData(gearEquippedInSlot ? gearEquippedInSlot.ItemData : null);
         }
     }
 }

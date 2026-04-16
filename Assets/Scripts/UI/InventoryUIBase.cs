@@ -37,7 +37,7 @@ public abstract class InventoryUIBase : MonoBehaviour
         foreach (Gear gear in sortedItems)
         {
             InventoryItemUI row = Instantiate(itemRowPrefab, itemContainer);
-            row.Setup(gear.ItemData);
+            row.DisplayItemData(gear.ItemData);
             
             SafeAddActionButtonCallback(row, gear);
         }

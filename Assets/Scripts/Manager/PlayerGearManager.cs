@@ -56,6 +56,21 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         InventoryManager.Instance?.GetInventory(InventoryType.Player)?.RemoveItem(item);
     }
 
+    public void TryUnequipFromSlot(PlayerGearSlot slot)
+    {
+        if (!slot.Item)
+        {
+            print("Nothing to unequip");
+            return;
+        }
+        
+        var item = slot.Item;
+        slot.Item = null;
+        onGearChanged.Invoke();
+        InventoryManager.Instance?.GetInventory(InventoryType.Player)?.AddItem(item);
+        print($"Unequipped {item.ItemData.ItemName} from slot {slot.name}");
+    }
+
     public List<Gear> GetEquippedGear()
     {
         var equippedGear = new List<Gear>();

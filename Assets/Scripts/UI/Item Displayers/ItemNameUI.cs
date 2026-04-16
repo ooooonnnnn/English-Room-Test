@@ -16,6 +16,6 @@ public class ItemNameUI : ItemDisplayerUIBase
     /// <summary>Displays the item name.</summary>
     public override void Setup(ItemDataAsset item)
     {
-        nameText.text = item.ItemName;
+        nameText.text = item ? item.ItemName : "";
     }
 }

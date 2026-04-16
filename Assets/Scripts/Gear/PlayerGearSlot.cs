@@ -35,4 +35,18 @@ public class PlayerGearSlot : MonoBehaviour
         if (currentItem == null) return;
         if (currentItem.ItemData.ItemType != itemType) currentItem = null;
     }
+
+    /// <summary>
+    /// Unequips the item from this slot
+    /// </summary>
+    public void TryUnequip()
+    {
+        if (!PlayerGearManager.Instance)
+        {
+            Debug.LogError("PlayerGearManager is not initialized");
+            return;
+        }
+        
+        PlayerGearManager.Instance.TryUnequipFromSlot(this);
+    }
 }

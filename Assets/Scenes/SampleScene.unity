@@ -1202,6 +1202,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 810079025}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryUnequip
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerGearSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2732,6 +2760,34 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196752379}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryUnequip
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerGearSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3105,6 +3161,34 @@ PrefabInstance:
     - target: {fileID: 7090701290396957910, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
       propertyPath: m_text
       value: Necklace
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 38302095}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryUnequip
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerGearSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3535,6 +3619,18 @@ PrefabInstance:
     - target: {fileID: 7090701290396957910, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
       propertyPath: m_text
       value: Shirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062324246301148531, guid: dfc3cbca5db052f45be10c3e840b6451, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

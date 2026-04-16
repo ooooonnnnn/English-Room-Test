@@ -16,6 +16,6 @@ public class ItemIconUI : ItemDisplayerUIBase
     /// <summary>Assigns the item icon sprite to the Image component.</summary>
     public override void Setup(ItemDataAsset item)
     {
-        iconImage.sprite = item.Icon;
+        iconImage.sprite = item ? item.Icon : null;
     }
 }
