@@ -16,6 +16,6 @@ public class ItemPriceUI : ItemDisplayerUIBase
     /// <summary>Displays the formatted item price.</summary>
     public override void Setup(ItemDataAsset item)
     {
-        priceText.text = item.Price.ToString("N0");
+        priceText.text = $"{item.Price:N0} g";
     }
 }
