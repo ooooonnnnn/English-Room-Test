@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-public class CharacterMove : MonoBehaviour
+public class CharacterMove : CharacterControllerController
 {
     [SerializeField] private float speed;
     [SerializeField] private float runSpeedFactor;
+
+    private bool _canRun = true;
     public bool canRun { 
         get => _canRun;
         set
@@ -15,17 +16,8 @@ public class CharacterMove : MonoBehaviour
             if (!value) _isRunning = false;
         }
     }
-
-    private bool _canRun = true;
     private bool _isRunning;
-    
-    [SerializeField, HideInInspector] private CharacterController characterController;
     private Vector2 _inputDir;
-
-    private void OnValidate()
-    {
-        characterController = GetComponent<CharacterController>();
-    }
 
     /// <summary>
     /// Takes a vector2 input and moves the character in the direction of the vector
@@ -49,6 +41,7 @@ public class CharacterMove : MonoBehaviour
     private void FixedUpdate()
     {
         var totalSpeed = _isRunning ? speed * runSpeedFactor : speed; 
-        characterController.Move(new Vector3(_inputDir.x, 0, _inputDir.y) * (totalSpeed * Time.fixedDeltaTime));
+        characterController.Move((transform.forward * _inputDir.y + transform.right * _inputDir.x)
+                                 * (totalSpeed * Time.fixedDeltaTime));
     }
 }

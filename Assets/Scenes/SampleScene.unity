@@ -1314,7 +1314,19 @@ MonoBehaviour:
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 800499723}
+        m_TargetAssemblyTypeName: CharacterLook, Assembly-CSharp
+        m_MethodName: HandleLookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
     m_ActionName: 'Player/Look[/Mouse/delta]'
   - m_PersistentCalls:
@@ -2086,6 +2098,7 @@ GameObject:
   - component: {fileID: 800499717}
   - component: {fileID: 800499721}
   - component: {fileID: 800499722}
+  - component: {fileID: 800499723}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2222,9 +2235,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b974d0636d032b3488585728f32ba163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 800499721}
   speed: 10
   runSpeedFactor: 1.5
+--- !u!114 &800499723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800499716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5fd9875cd3cb94cbe59033e3e67d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   characterController: {fileID: 800499721}
+  cameraOrigin: {fileID: 1318567456}
+  sensitivity: 10
+  minLookAngle: 0
+  maxLookAngle: 70
+  invertY: 1
 --- !u!114 &810079025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9034584713864472739, guid: 7dffbc1bfe5f7674882f0d7d178d6737, type: 3}
