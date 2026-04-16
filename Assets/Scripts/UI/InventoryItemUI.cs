@@ -12,6 +12,8 @@ public class InventoryItemUI : MonoBehaviour
     /// <summary>Delegates item data to each child display component.</summary>
     public void Setup(ItemDataAsset item)
     {
+        if (!item) return;
+        
         foreach (var itemDisplayer in itemDisplayers)
         {
             itemDisplayer.Setup(item);

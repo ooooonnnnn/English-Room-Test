@@ -47,7 +47,11 @@ public abstract class InventoryUIBase : MonoBehaviour
     /// </summary>
     private void SafeAddActionButtonCallback(InventoryItemUI itemUI, Gear gear)
     {
-        if (!itemUI.ActionButton) Debug.LogError($"Inventory item UI {itemUI.name} has no action button!");
+        if (!itemUI.ActionButton)
+        {
+            Debug.LogError($"Inventory item UI {itemUI.name} has no action button!");
+            return;
+        }
         AddActionButtonCallback(itemUI.ActionButton, gear);
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gloves 1
   m_EditorClassIdentifier: 
   itemType: 4
-  itemName: Shirt
+  itemName: Gloves
   price: 0
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

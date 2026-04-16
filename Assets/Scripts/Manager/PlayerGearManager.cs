@@ -45,14 +45,14 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         var emptySlot = gearSlots[itemType].Find(slot => slot.Item == null);
         if (!emptySlot)
         {
-            print($"No empty slot to equip {item.ItemData.name}");
+            print($"No empty slot to equip {item.ItemData.ItemName}");
             return;
         }
         
         //Equip the item
         emptySlot.Item = item;
         ReportEquippedItems();
-        print($"Equipped {item.ItemData.name} to slot {emptySlot.name}");
+        print($"Equipped {item.ItemData.ItemName} to slot {emptySlot.name}");
         InventoryManager.Instance?.RemoveItem(item);
     }
 
@@ -63,7 +63,7 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         {
             foreach (var slot in slotList)
             {
-                if (slot.Item != null)
+                if (slot.Item)
                     equippedGear.Add(slot.Item);
             }
         }
