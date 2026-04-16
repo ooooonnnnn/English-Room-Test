@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   statAffectorData:
-  - statType: 0
-    value: 5
-  - statType: 1
-    value: -1
-  price: 100
+  - statType: 2
+    value: 1
+  price: 50
   itemName: Cloth Cap
   flavorDescription: Scholarly hat
   icon: {fileID: 21300000, guid: 37c4a0218c09cd242abe511b0b876c59, type: 3}
-  statEffectsDescription: 'Speed: +5 Jump Height: -1'
+  statEffectsDescription: 'Stamina: +1'
