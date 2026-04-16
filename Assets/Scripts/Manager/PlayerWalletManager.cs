@@ -20,4 +20,6 @@ public class PlayerWalletManager : PersistentSingleton<PlayerWalletManager>
         money += amount;
         onMoneyChanged.Invoke(money);
     }
+    
+    public bool CanBuyItem(Gear itemToBuy) => money >= itemToBuy.ItemData.Price;
 }
