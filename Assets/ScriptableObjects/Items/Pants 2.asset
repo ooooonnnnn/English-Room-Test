@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cd3e62ae1f254c4689972d8e6b81b76, type: 3}
-  m_Name: Item_ElvenBow
+  m_Name: Pants 2
   m_EditorClassIdentifier: 
-  itemName: Elven Bow
-  price: 320
-  description: A finely crafted elven bow with exceptional range and accuracy.
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemType: 2
+  itemName: Shirt
+  price: 0
+  description: 
+  icon: {fileID: 0}

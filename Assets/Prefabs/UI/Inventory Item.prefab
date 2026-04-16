@@ -503,6 +503,7 @@ MonoBehaviour:
   itemDisplayers:
   - {fileID: 2661326134043721545}
   - {fileID: 8893319428060389488}
+  actionButton: {fileID: 3590663339715554793}
 --- !u!1 &9049544811330779797
 GameObject:
   m_ObjectHideFlags: 0

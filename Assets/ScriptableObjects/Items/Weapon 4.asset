@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cd3e62ae1f254c4689972d8e6b81b76, type: 3}
-  m_Name: Item_WoodenSword
+  m_Name: Weapon 4
   m_EditorClassIdentifier: 
-  itemName: Wooden Sword
-  price: 50
-  description: A basic sword carved from sturdy oak. Better than nothing.
+  itemType: 5
+  itemName: Weapon
+  price: 0
+  description: 
   icon: {fileID: 0}

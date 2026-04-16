@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class InventoryItemUI : MonoBehaviour
 {
     [SerializeField] private ItemDisplayerUIBase[] itemDisplayers;
+    [SerializeField] private Button actionButton;
+    public Button ActionButton => actionButton;
 
     /// <summary>Delegates item data to each child display component.</summary>
     public void Setup(ItemDataAsset item)
@@ -15,10 +17,4 @@ public class InventoryItemUI : MonoBehaviour
             itemDisplayer.Setup(item);
         }
     }
-
-    // private void Start()
-    // {
-    //     print("Testing Inventory item ui");
-    //     Setup(InventoryManager.Instance.GetItem(0));
-    // }
 }
