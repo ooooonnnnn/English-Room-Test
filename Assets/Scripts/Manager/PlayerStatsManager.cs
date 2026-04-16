@@ -31,6 +31,12 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
 
     #endregion
 
+    protected override void Awake()
+    {
+        base.Awake();
+        RecalculateStats();
+    }
+
     public float GetStatValue(StatType stat)
     { 
         return stats.GetValueOrDefault(stat, statDefaultValues.GetDefaultValue(stat));

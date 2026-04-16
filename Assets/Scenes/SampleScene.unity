@@ -4642,7 +4642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: 'stats.m_Values.Array.data[0]'
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 690250849624516269, guid: 7f1ea588bf9fc3e41aad6104bb72c61b, type: 3}
       propertyPath: 'stats.m_Values.Array.data[1]'
