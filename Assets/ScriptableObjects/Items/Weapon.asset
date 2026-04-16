@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 5
   statAffectorData:
-    statType: 2
-    value: -5
+  - statType: 0
+    value: 5
   price: 100
   itemName: Weapon
   description: A cool item

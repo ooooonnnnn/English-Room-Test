@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   statAffectorData:
-    statType: 2
+  - statType: 0
     value: 5
   price: 100
   itemName: Pants

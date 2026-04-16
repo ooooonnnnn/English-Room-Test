@@ -10,12 +10,16 @@ using Random = UnityEngine.Random;
 public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
 {
     [SerializeField] private SerializedDictionary<StatType, float> stats;
+    [SerializeField] private StatType_DefaultValues statDefaultValues;
     public UnityEvent onStatsChanged;
 
     [SerializeField] private InputActionReference debugAction;
 
+    #region Debug
+
     private void OnValidate()
     {
+        //Debug action
         debugAction.action.performed += ctx => ChangeRandomStat();
     }
 
@@ -25,16 +29,17 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
         SetStatValue(statTypes[Random.Range(0, statTypes.Length)], Random.Range(0, 100));
     }
 
+    #endregion
+
     public float GetStatValue(StatType stat)
     { 
-        //TODO: default values SO
-        return stats.GetValueOrDefault(stat, 0);
+        return stats.GetValueOrDefault(stat, statDefaultValues.GetDefaultValue(stat));
     }
 
     public void SetStatValue(StatType stat, float value)
     {
         stats[stat] = value;
-        onStatsChanged?.Invoke();
+        onStatsChanged.Invoke();
     }
 
     [ContextMenu("Initialize with default values")]
@@ -42,8 +47,25 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
     {
         foreach (StatType statType in Enum.GetValues(typeof(StatType)))
         {
-            //TODO: default values SO
-            SetStatValue(statType, 0);
+            SetStatValue(statType, statDefaultValues.GetDefaultValue(statType));
         }
+    }
+
+    public void RecalculateStats()
+    {
+        //Reset to default values
+        AddAllStatsDefaultValues();
+        
+        //Add stat effects from equipped gear
+        var equippedGear= PlayerGearManager.Instance.GetEquippedGear();
+        foreach (var gear in equippedGear)
+        {
+            var statEffects = gear.ItemData.StatAffectorData;
+            foreach (var statEffect in statEffects)
+            {
+                stats[statEffect.StatType] += statEffect.Value;
+            }
+        }
+        onStatsChanged.Invoke();
     }
 }

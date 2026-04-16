@@ -5,7 +5,7 @@ public class ItemDataAsset : ScriptableObject
 {
     [Header("Functional Properties")]
     [SerializeField] private ItemType itemType;
-    [SerializeField] private StatAffectorData statAffectorData;
+    [SerializeField] private StatAffectorData[] statAffectorData;
     [SerializeField] private float price;
     
     [Header("Display Properties")]
@@ -29,4 +29,9 @@ public class ItemDataAsset : ScriptableObject
 
     /// <summary>The icon sprite representing the item.</summary>
     public Sprite Icon => icon;
+    
+    /// <summary>
+    /// Array of stat effects this item has
+    /// </summary>
+    public StatAffectorData[] StatAffectorData => statAffectorData;
 }

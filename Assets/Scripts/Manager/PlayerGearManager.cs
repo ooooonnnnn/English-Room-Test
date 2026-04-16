@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
 {
     [SerializeField] private SerializedDictionary<ItemType, List<PlayerGearSlot>> gearSlots;
-    public UnityEvent<List<Gear>> onGearChanged;
+    public UnityEvent onGearChanged;
 
     #region Initialization
 
@@ -51,12 +51,12 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
         
         //Equip the item
         emptySlot.Item = item;
-        ReportEquippedItems();
+        onGearChanged.Invoke();
         print($"Equipped {item.ItemData.ItemName} to slot {emptySlot.name}");
         InventoryManager.Instance?.RemoveItem(item);
     }
 
-    private void ReportEquippedItems()
+    public List<Gear> GetEquippedGear()
     {
         var equippedGear = new List<Gear>();
         foreach (var slotList in gearSlots.Values)
@@ -68,6 +68,6 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
             }
         }
 
-        onGearChanged.Invoke(equippedGear);
+        return equippedGear;
     }
 }
