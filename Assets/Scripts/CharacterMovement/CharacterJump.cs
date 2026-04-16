@@ -56,7 +56,7 @@ public class CharacterJump : CharacterControllerController, IAffectedByStats, IR
             0, float.PositiveInfinity);
     }
 
-    public void HandleStaminaChange(float currentStamina, float _)
+    public void HandleStaminaChange(float currentStamina)
     {
         _canJump = currentStamina >= staminaCost;
     }

@@ -14,5 +14,5 @@ public interface IRequireStamina
     //
     // public float staminaCostPerAction { get; }
 
-    public void HandleStaminaChange(float currentStamina, float staminaRatio);
+    public void HandleStaminaChange(float currentStamina);
 }

@@ -14,7 +14,8 @@ public class CharacterStamina : MonoBehaviour, IAffectedByStats
     /// - current stamina
     /// - ratio of stamina to max stamina
     /// </summary>
-    public UnityEvent<float, float> onStaminaChanged;
+    public UnityEvent<float> onStaminaChanged_Amount;
+    public UnityEvent<float> onStaminaChanged_Percentage;
 
     private void Start()
     {
@@ -24,7 +25,8 @@ public class CharacterStamina : MonoBehaviour, IAffectedByStats
 
     private void ReportStamina()
     {
-        onStaminaChanged.Invoke(currentStamina, currentStamina / maxStamina);
+        onStaminaChanged_Amount.Invoke(currentStamina);
+        onStaminaChanged_Percentage.Invoke(currentStamina / maxStamina);
     }
 
     private void FixedUpdate()
