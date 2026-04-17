@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,18 +10,19 @@ using UnityEngine.InputSystem;
 public class PlayerWalletManager : PersistentSingleton<PlayerWalletManager>
 {
     [SerializeField] private float money;
-    [SerializeField] private InputActionReference debugAction;
     public float Money => money;
     public UnityEvent<float> onMoneyChanged;
-
-    private void OnValidate()
-    {
-        debugAction.action.performed += ctx => AddMoney(100);
-    }
+    [SerializeField] private float debugAddMoneyAmount;
 
     private void Start()
     {
         onMoneyChanged.Invoke(money);
+    }
+
+    public void DebugAddMoney(InputAction.CallbackContext ctx)
+    {
+        if (ctx.phase != InputActionPhase.Performed) return;
+        AddMoney(debugAddMoneyAmount);
     }
 
     public void AddMoney(float amount)
