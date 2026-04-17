@@ -120,6 +120,7 @@ Character has scripts for movement, and they inherit an interface for being affe
 * Adding more items and viewing all of them isn't the easiest. There isn't a centralized data table for all of them.
 * There isn't a save system
 * I'm using a repetitive workaround for serializing dictionaries (I used Unity's SerializedDictionary until I realized it causes build issues). Given more time I'd implement or import a better solution.
+* Some components require manual initialization instead of relying on OnValidate (not manually inserting values, just clicking a button).
 
 
 
