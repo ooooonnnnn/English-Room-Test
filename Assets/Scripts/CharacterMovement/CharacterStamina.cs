@@ -26,7 +26,7 @@ public class CharacterStamina : MonoBehaviour, IAffectedByStats
     private void ReportStamina()
     {
         onStaminaChanged_Amount.Invoke(currentStamina);
-        onStaminaChanged_Percentage.Invoke(currentStamina / maxStamina);
+        onStaminaChanged_Percentage.Invoke(maxStamina <= 0 ? 0 :currentStamina / maxStamina);
     }
 
     private void FixedUpdate()
@@ -53,6 +53,7 @@ public class CharacterStamina : MonoBehaviour, IAffectedByStats
 
     public void HandleStatsChanged()
     {
+        print("stats changed (stamina)");
         maxStamina = Mathf.Clamp(
             PlayerStatsManager.Instance.GetStatValue(StatType.MaxStamina),
             0, float.PositiveInfinity);

@@ -2856,16 +2856,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1625219244989402191, guid: f5027fa6be690064f861fc1483792561, type: 3}
       propertyPath: m_text
-      value: 'F1: Randomize Stats
-
-        F2: Add Money
+      value: 'F2: Add Money
 
         TAB: Toggle Shop
 
-        WASD:
-        Walk
+        WASD: Walk
 
-        SHIFT: Sprint
+        SHIFT:
+        Sprint
 
         SPACE: Jump
 
@@ -7040,7 +7038,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.55
+  m_Value: 0.84
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

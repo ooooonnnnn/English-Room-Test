@@ -16,24 +16,6 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
     [SerializeField] private StatType_DefaultValues statDefaultValues;
     public UnityEvent onStatsChanged;
 
-    [SerializeField] private InputActionReference debugAction;
-
-    #region Debug
-
-    private void OnValidate()
-    {
-        //Debug action
-        debugAction.action.performed += ctx => ChangeRandomStat();
-    }
-
-    private void ChangeRandomStat()
-    {
-        StatType[] statTypes = (StatType[])Enum.GetValues(typeof(StatType));
-        SetStatValue(statTypes[Random.Range(0, statTypes.Length)], Random.Range(0, 100));
-    }
-
-    #endregion
-
     protected override void Awake()
     {
         base.Awake();
@@ -72,7 +54,10 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
     public void RecalculateStats()
     {
         //Reset to default values
-        AddAllStatsDefaultValues();
+        foreach (var stat in _stats.Keys.ToList())
+        {
+            _stats[stat] = statDefaultValues.GetDefaultValue(stat);
+        }
         
         //Add stat effects from equipped gear
         var equippedGear= PlayerGearManager.Instance.GetEquippedGear();
