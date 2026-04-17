@@ -40,11 +40,14 @@ public class ItemDataAsset : ScriptableObject
     /// </summary>
     public StatAffectorData[] StatAffectorData => statAffectorData;
 
+    #if UNITY_EDITOR
     private void OnValidate()
     {
         ConstructStatEffectDescription();
     }
+    #endif
 
+    #if UNITY_EDITOR
     private void ConstructStatEffectDescription()
     {
         // var statNamesAssetGUIDS = AssetDatabase.FindAssets(nameof(StatType_Names));
@@ -65,4 +68,5 @@ public class ItemDataAsset : ScriptableObject
 
         statEffectsDescription = string.Join(' ', descriptions);
     }
+    #endif
 }

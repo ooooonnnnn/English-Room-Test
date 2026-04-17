@@ -11,6 +11,7 @@ public abstract class SingletonSO<T> : ScriptableObject where T : SingletonSO<T>
 {
     public static T Instance { get; private set; }
 
+#if UNITY_EDITOR
     protected virtual void OnValidate()
     {
         if (Instance && (Instance != this))
@@ -20,7 +21,9 @@ public abstract class SingletonSO<T> : ScriptableObject where T : SingletonSO<T>
         }
         Instance = (T)this;
     }
+#endif
 
+#if UNITY_EDITOR
     public static T LoadSingletonAsset()
     {
         var assetGUIDS = AssetDatabase.FindAssets(typeof(T).ToString());
@@ -32,4 +35,5 @@ public abstract class SingletonSO<T> : ScriptableObject where T : SingletonSO<T>
         var foundAssetPath = AssetDatabase.GUIDToAssetPath(assetGUIDS[0]);
         return AssetDatabase.LoadAssetAtPath<T>(foundAssetPath);
     }
+#endif
 }

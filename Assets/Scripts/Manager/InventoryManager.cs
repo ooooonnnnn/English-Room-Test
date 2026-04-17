@@ -12,6 +12,7 @@ public class InventoryManager : PersistentSingleton<InventoryManager>
     
     public Inventory GetInventory(InventoryType inventoryType) => inventories.GetValueOrDefault(inventoryType,null);
 
+    #if UNITY_EDITOR
     private void OnValidate()
     {
         inventories = new();
@@ -20,4 +21,5 @@ public class InventoryManager : PersistentSingleton<InventoryManager>
             inventories[inventory.InventoryType] = inventory;
         }
     }
+    #endif
 }

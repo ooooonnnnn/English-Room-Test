@@ -8,8 +8,10 @@ public abstract class CharacterControllerController : MonoBehaviour
 {
     [SerializeField, HideInInspector] protected CharacterController characterController;
     
+    #if UNITY_EDITOR
     private void OnValidate()
     {
         characterController = GetComponent<CharacterController>();
     }
+    #endif
 }

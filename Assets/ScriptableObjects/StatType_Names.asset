@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a093a4f26a172c44b456cbf6712a730, type: 3}
   m_Name: StatType_Names
   m_EditorClassIdentifier: 
-  statTypeNames:
-    m_Keys: 000000000100000002000000
-    m_Values:
-    - Speed
-    - Jump Height
-    - Stamina
+  statTypeNamesDictKeys: 000000000100000002000000
+  statTypeNamesDictValues:
+  - Speed
+  - Jump Height
+  - Stamina

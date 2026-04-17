@@ -1,15 +1,24 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
 {
-    [SerializeField] private SerializedDictionary<ItemType, List<PlayerGearSlot>> gearSlots;
+    private Dictionary<ItemType, SerializableList<PlayerGearSlot>> _gearSlots;
+    [SerializeField] private List<ItemType> gearSlotsDictKeys;
+    [SerializeField] private List<SerializableList<PlayerGearSlot>> gearSlotsDictValues;
     public UnityEvent onGearChanged;
 
     #region Initialization
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _gearSlots = new (
+            gearSlotsDictKeys.Zip(gearSlotsDictValues, (key, val) 
+                => new KeyValuePair<ItemType, SerializableList<PlayerGearSlot>>(key, val)));
+    }
 
     private void OnValidate()
     {
@@ -18,16 +27,19 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
 
     private void InitializeGearSlots()
     {
-        gearSlots = new ();
+        _gearSlots = new ();
 
         foreach (Transform child in transform)
         {
             if (!child.TryGetComponent(out PlayerGearSlot slot)) continue;
 
-            gearSlots.TryAdd(slot.ItemType, new List<PlayerGearSlot>());
+            _gearSlots.TryAdd(slot.ItemType, new SerializableList<PlayerGearSlot>());
             
-            gearSlots[slot.ItemType].Add(slot);
+            _gearSlots[slot.ItemType].Add(slot);
         }
+        
+        gearSlotsDictKeys = _gearSlots.Keys.ToList();
+        gearSlotsDictValues = _gearSlots.Values.ToList();
     }
 
     #endregion
@@ -35,14 +47,14 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
     public void TryEquip(Gear item)
     {
         var itemType = item.ItemData.ItemType;
-        if (!gearSlots.ContainsKey(itemType))
+        if (!_gearSlots.ContainsKey(itemType))
         {
             Debug.LogWarning($"No gear slot found for item type {itemType}");
             return;
         }
 
         //Find the first empty slot
-        var emptySlot = gearSlots[itemType].Find(slot => slot.Item == null);
+        var emptySlot = _gearSlots[itemType].Find(slot => slot.Item == null);
         if (!emptySlot)
         {
             print($"No empty slot to equip {item.ItemData.ItemName}");
@@ -74,7 +86,7 @@ public class PlayerGearManager : PersistentSingleton<PlayerGearManager>
     public List<Gear> GetEquippedGear()
     {
         var equippedGear = new List<Gear>();
-        foreach (var slotList in gearSlots.Values)
+        foreach (var slotList in _gearSlots.Values)
         {
             foreach (var slot in slotList)
             {

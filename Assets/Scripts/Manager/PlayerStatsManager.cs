@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,7 +10,9 @@ using Random = UnityEngine.Random;
 [Tooltip("Keeps track of the player's stats")]
 public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
 {
-    [SerializeField] private SerializedDictionary<StatType, float> stats;
+    private Dictionary<StatType, float> _stats;
+    [SerializeField] private List<StatType> statsDictKeys;
+    [SerializeField] private List<float> statsDictValues;
     [SerializeField] private StatType_DefaultValues statDefaultValues;
     public UnityEvent onStatsChanged;
 
@@ -34,26 +37,35 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
     protected override void Awake()
     {
         base.Awake();
+        _stats = new Dictionary<StatType, float>(statsDictKeys.Zip(statsDictValues,
+            (key, val) => new KeyValuePair<StatType, float>(key, val)));
+    }
+
+    private void Start()
+    {
         RecalculateStats();
     }
 
     public float GetStatValue(StatType stat)
     { 
-        return stats.GetValueOrDefault(stat, statDefaultValues.GetDefaultValue(stat));
+        return _stats.GetValueOrDefault(stat, statDefaultValues.GetDefaultValue(stat));
     }
 
     public void SetStatValue(StatType stat, float value)
     {
-        stats[stat] = value;
+        _stats[stat] = value;
         onStatsChanged.Invoke();
     }
 
     [ContextMenu("Initialize with default values")]
     private void AddAllStatsDefaultValues()
     {
+        statsDictKeys = new();
+        statsDictValues = new();
         foreach (StatType statType in Enum.GetValues(typeof(StatType)))
         {
-            SetStatValue(statType, statDefaultValues.GetDefaultValue(statType));
+            statsDictKeys.Add(statType);
+            statsDictValues.Add(statDefaultValues.GetDefaultValue(statType));
         }
     }
 
@@ -69,7 +81,7 @@ public class PlayerStatsManager : PersistentSingleton<PlayerStatsManager>
             var statEffects = gear.ItemData.StatAffectorData;
             foreach (var statEffect in statEffects)
             {
-                stats[statEffect.StatType] += statEffect.Value;
+                _stats[statEffect.StatType] += statEffect.Value;
             }
         }
         onStatsChanged.Invoke();
