@@ -87,11 +87,11 @@ Allows access to both inventories by query
 
 ###### Player Gear Manager:
 
-Data: 
+Data:
 
-* tracks equipped items in slots. 
-* can equip and unequip items. 
-* Has slots that can hold one item of a specific type. 
+* tracks equipped items in slots.
+* can equip and unequip items.
+* Has slots that can hold one item of a specific type.
 * when equipping an item it will go to the first available slot of it's type, and be removed from the inventory
 * you can unequip an item from a slot, it will go to the inventory
 
@@ -119,6 +119,7 @@ Character has scripts for movement, and they inherit an interface for being affe
 
 * Adding more items and viewing all of them isn't the easiest. There isn't a centralized data table for all of them.
 * There isn't a save system
+* I'm using a repetitive workaround for serializing dictionaries (I used Unity's SerializedDictionary until I realized it causes build issues). Given more time I'd implement or import a better solution.
 
 
 
@@ -130,11 +131,11 @@ Q1 - What is a ScriptableObject and why is it useful? When would you use one ins
 
 
 
-A1: It’s a kind of custom unity asset that has both data and functionality. They are mostly used to store static game data and load it easily. Data such as the shop items in this task. They can also be used as editor tools to create or modify other assets. 
+A1: It’s a kind of custom unity asset that has both data and functionality. They are mostly used to store static game data and load it easily. Data such as the shop items in this task. They can also be used as editor tools to create or modify other assets.
 
 You would use a scriptable object in place of a MonoBehaviour when you need access to data that is not coupled to a specific scene. We may need to access the shop from several scenes, which is why we need the data to be stored outside of them, and ScriptableObject is a good solution for that.
 
-Theoretically, you could also have a MonoBehavior on a prefab which obviously exists outside the scenes, but editing the data on this MonoBehaviour will be much more cumbersome. Also, you’d have to instantiate it in the scene, which is a redundant GameObject. 
+Theoretically, you could also have a MonoBehavior on a prefab which obviously exists outside the scenes, but editing the data on this MonoBehaviour will be much more cumbersome. Also, you’d have to instantiate it in the scene, which is a redundant GameObject.
 
 
 
@@ -152,69 +153,5 @@ Another advantage is in the clarity of this code: having two scripts named “Mo
 
 
 
-Extending the system to new stat types is as easy as adding a new entry in the StatTypes enumeration.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Extending the system to new stat types is as easy as adding a new entry in the StatTypes enumeration, and initializing some of the components.
 
